@@ -9,7 +9,7 @@ import {
     FlatList
 } from 'react-native';
 import colors from '../../constants/colors';
-import IconFish from '../../assets/icons/fish.png';
+import IconHumidity from '../../assets/icons/water.png';
 import IconFood from '../../assets/icons/food.png';
 import IconPump from '../../assets/icons/pump.png';
 import IconLight from '../../assets/icons/light.png';
@@ -35,12 +35,6 @@ export default class Menu extends React.Component {
         this.state = {
           data: [
               {
-                key: "fish", 
-                title: "Peces", 
-                color: colors.black,  
-                image: IconFish
-              },
-              {
                 key: "food", 
                 title: "Alimento", 
                 color: colors.black, 
@@ -65,6 +59,12 @@ export default class Menu extends React.Component {
                 image: IconTemperature
               },
               {
+                key: "humidity", 
+                title: "Humedad", 
+                color: colors.black,  
+                image: IconHumidity
+              },
+              {
                 key: "level", 
                 title: "Nivel de Agua",  
                 color: colors.black,
@@ -75,11 +75,8 @@ export default class Menu extends React.Component {
       }
     
       _clickEventListener(key) {
-        if(key === "fish"){
-            
-        }
         if(key === "food"){
-            //this.props.navigation.navigate('Menu');
+          this.props.navigation.navigate('Food');
         }
         if(key === "pump"){
         //this.props.navigation.navigate('Menu');
@@ -89,6 +86,9 @@ export default class Menu extends React.Component {
         }
         if(key === "temperature"){
             //this.props.navigation.navigate('Menu');
+        }
+        if(key === "humidity"){
+            
         }
         if(key === "level"){
             //this.props.navigation.navigate('Menu');

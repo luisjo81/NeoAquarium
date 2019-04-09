@@ -8,7 +8,7 @@ import {
     FlatList,
 } from 'react-native';
 import colors from '../../constants/colors';
-import IconAquarium from '../../assets/icons/aquarium-1.png';
+import IconAquarium from '../../assets/icons/aquarium-2.png';
 import IconGears from '../../assets/icons/gears.png';
 import IconInfo from '../../assets/icons/info.png';
 import IconExit from '../../assets/icons/exit.png';
@@ -22,8 +22,8 @@ export default class Home extends Component {
         headerTitleStyle: {
             fontWeight: 'bold',
             color: colors.white
-        },
-      };
+        }
+    };
 
     constructor(props) {
       super(props);

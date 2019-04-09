@@ -14,11 +14,39 @@ import BackgroundFish from '../../assets/backgrounds/background-1.png';
 export default class Login extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            userName: '',
+            name: '',
+            password: '',
+            message: '',
+          };
     }
 
     _clickEventListener() {
         this.props.navigation.navigate('Home');
     }
+
+    _checkUserLogin = (user, pass) => {
+        if (user === 'luis' && pass === 'soa') {
+            this.props.navigation.navigate('Home');
+          } 
+        else {
+            this.setState({ message: 'Usuario o contraseña incorrectas'});
+            alert(this.state.message);
+        }
+    };
+    
+    _onPassTextChanged = event => {
+        this.setState({
+            passString: event.nativeEvent.text,
+        });
+    };
+
+    _onUserTextChanged = event => {
+        this.setState({
+            userString: event.nativeEvent.text,
+        });
+    };
 
     render() {
         return (
