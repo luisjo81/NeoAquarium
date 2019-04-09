@@ -1,6 +1,8 @@
 # Created by https://www.gitignore.io/api/reactnative
 # Edit at https://www.gitignore.io/?templates=reactnative
 
+node_modules
+
 ### ReactNative ###
 # React Native Stack Base
 
