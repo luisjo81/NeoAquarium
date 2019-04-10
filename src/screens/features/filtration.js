@@ -1,18 +1,15 @@
-import React from 'react';
-import {
-    StyleSheet,
+import React, { Component } from 'react'
+import { 
     Text,
-    Button,
     View,
-    Image,
     ImageBackground,
-    TouchableOpacity,
-    FlatList
-} from 'react-native';
+    StyleSheet
+ } from 'react-native'
+import SwitchButton from '../../components/switch.js'
 import colors from '../../constants/colors';
 import BackgroundBlue from '../../assets/backgrounds/background-2.png';
 
-export default class FeatureFood extends React.Component {
+export default class Filtration extends Component {
     static navigationOptions = {
         title: 'Filtración',
         headerStyle: {
@@ -24,44 +21,34 @@ export default class FeatureFood extends React.Component {
         },
       };
 
-      constructor(props) {
-        super(props);
-        this.state = {
-            actualState: true,
-            states: [
-                {
-                    key: "on",
-                    text: "Encendido",
-                    color: colors.green
-                },
-                {
-                    key: "off",
-                    text: "Apagado",
-                    color: colors.red
-                }
-            ]
-        };
+   constructor() {
+      super();
+      this.state = {
+         switchValue: true,
       }
+   }
 
-      _clickEventListener() {
-          if(this.state.actualState === true){
-              
-          }
-      }
-    
-      render() {
-        return (
-            <ImageBackground style={styles.background} source={BackgroundBlue}>
+   _toggleSwitch = (value) => {
+      this.setState({switchValue: value})
+      console.log('Switch Value: ' + value)
+   }
+
+   render() {
+      return (
+        <ImageBackground style={styles.background} source={BackgroundBlue}>
                  <View style={styles.container}>
-                    <TouchableOpacity style={[styles.box, {backgroundColor:colors.black}]} onPress={() => {this._clickEventListener()}}>
-                        <Text style={styles.buttonText}>Dispensar</Text>
-                    </TouchableOpacity>
+                    <Text style={styles.text}>Encender/Apagar</Text>
+                    <SwitchButton
+                        _toggleSwitch = {this._toggleSwitch}
+                        switchValue = {this.state.switchValue}
+                        style={styles.switch}
+                    />
                 </View>
-            </ImageBackground>
+        </ImageBackground>
         );
-      }
-  }
-    
+   }
+}
+
 const styles = StyleSheet.create({
     background: {
         flex: 1,
@@ -69,24 +56,25 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     container: {
-        flex: 1,
-        marginTop: '60%',
+        marginTop: '25%',
+        marginLeft: '17%',
+        width: '65%',
+        height: '30%',
+        borderWidth: 2,
+        borderColor: colors.blue2,
+        backgroundColor: 'rgba(0,0,0, .5)',
         alignItems: 'center'
     },
-    buttonText: { 
-        fontSize: 25,
+    text: { 
+        fontSize: 15,
         flex: 1,
         color: colors.white,
         fontWeight:'bold',
         textAlign: 'center',
         marginTop: 20,
-        marginBottom: 20
+        //marginBottom: 20
     },
-    box:{
-        marginHorizontal: 2,
-        width: 200,
-        height: 80,
-        borderWidth: 2,
-        borderColor: colors.blue2
-      },
+    switch: {
+        flex: 1        
+    }
 });     

@@ -2,12 +2,9 @@ import React from 'react';
 import {
     StyleSheet,
     Text,
-    Button,
     View,
-    Image,
     ImageBackground,
-    TouchableOpacity,
-    FlatList
+    TouchableOpacity
 } from 'react-native';
 import colors from '../../constants/colors';
 import BackgroundBlue from '../../assets/backgrounds/background-2.png';

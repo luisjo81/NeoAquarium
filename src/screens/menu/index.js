@@ -69,7 +69,7 @@ export default class Menu extends React.Component {
                 title: "Nivel de Agua",  
                 color: colors.black,
                 image: IconLevel
-              },    
+              }
           ]
         };
       }
@@ -79,10 +79,10 @@ export default class Menu extends React.Component {
           this.props.navigation.navigate('Food');
         }
         if(key === "pump"){
-        //this.props.navigation.navigate('Menu');
+          this.props.navigation.navigate('Filtration');
         }
         if(key === "light"){
-            //this.props.navigation.navigate('Menu');
+          this.props.navigation.navigate('Light');
         }
         if(key === "temperature"){
             //this.props.navigation.navigate('Menu');

@@ -9,15 +9,17 @@ import {
     KeyboardAvoidingView
 } from 'react-native';
 import colors from '../../constants/colors';
-import BackgroundFish from '../../assets/backgrounds/background-1.png';
+import BackgroundBlue from '../../assets/backgrounds/background-2.png';
 
-export default class Login extends Component {
+export default class Signin extends Component {
     constructor(props) {
         super(props);
         this.state = {
             userName: '',
             firstName: '',
             lastName: '',
+            email: '',
+            phoneNumber: '',
             password: ''
           };
     }
@@ -25,15 +27,11 @@ export default class Login extends Component {
     _clickEventListener() {
         this.props.navigation.navigate('Home');
     }
-
-    _checkUserLogin = (user, pass) => {
-        if (user === 'luis' && pass === 'soa') {
-            this.props.navigation.navigate('Home');
-          } 
-        else {
-            this.setState({ message: 'Usuario o contraseña incorrectas'});
-            alert(this.state.message);
-        }
+   
+    _onEmailTextChanged = event => {
+        this.setState({
+            email: event.nativeEvent.text,
+        });
     };
 
     _onFirstNameChanged = event => {
@@ -53,7 +51,13 @@ export default class Login extends Component {
             password: event.nativeEvent.text,
         });
     };
-    
+
+    _onPhoneNumberTextChanged = event => {
+        this.setState({
+            phoneNumber: event.nativeEvent.text,
+        });
+    };
+
     _onUserNameTextChanged = event => {
         this.setState({
             userName: event.nativeEvent.text,
@@ -62,10 +66,9 @@ export default class Login extends Component {
 
     render() {
         return (
-            <ImageBackground style={styles.background} source={BackgroundFish}>
+            <ImageBackground style={styles.background} source={BackgroundBlue}>
                 <KeyboardAvoidingView behavior={'padding'} style={styles.mainContainer}>
-                    <Text style={styles.title}>Neo Aquarium</Text>
-                    <Text style={styles.title}>Iniciar Sesión</Text>
+                    <Text style={styles.title}>Registrarse</Text>
                     <View style={styles.formContainer}>
                         <View style={styles.container}>
                             <TextInput 
@@ -73,6 +76,26 @@ export default class Login extends Component {
                                 placeholderTextColor = 'rgba(255,255,255,0.7)'
                                 autoCapitalize="none"
                                 autoCorrect={false}
+                                style={styles.input}/>
+                            <TextInput 
+                                placeholder="Nombre" 
+                                placeholderTextColor = 'rgba(255,255,255,0.7)'
+                                autoCorrect={false}
+                                style={styles.input}/>
+                            <TextInput 
+                                placeholder="Apellido" 
+                                placeholderTextColor = 'rgba(255,255,255,0.7)'
+                                autoCorrect={false}
+                                style={styles.input}/>
+                            <TextInput 
+                                placeholder="Correo electrónico" 
+                                placeholderTextColor = 'rgba(255,255,255,0.7)'
+                                autoCapitalize="none"
+                                autoCorrect={false}
+                                style={styles.input}/>
+                            <TextInput 
+                                placeholder="Número Telefónico" 
+                                placeholderTextColor = 'rgba(255,255,255,0.7)'
                                 style={styles.input}/>
                             <TextInput 
                                 placeholder="Contraseña"
@@ -110,7 +133,8 @@ const styles = StyleSheet.create({
         flex: 1
     },
     formContainer: {
-        flex: 1
+        flex: 1,
+        marginBottom: 270
     },
     container: {
         padding: 20
