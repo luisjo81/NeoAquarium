@@ -5,10 +5,13 @@ import {
     ImageBackground,
     StyleSheet
  } from 'react-native'
-import SwitchButton from '../../components/switch.js'
+import SwitchButton from '../../components/switch.js';
 import colors from '../../constants/colors';
 import BackgroundBlue from '../../assets/backgrounds/background-2.png';
+import MQTTClient from '../../mqtt';
 
+global.switchState = true;
+  
 export default class Filtration extends Component {
     static navigationOptions = {
         title: 'Filtración',
@@ -24,13 +27,20 @@ export default class Filtration extends Component {
    constructor() {
       super();
       this.state = {
-         switchValue: true,
-      }
+          switchValue: true
+      }  
    }
 
    _toggleSwitch = (value) => {
-      this.setState({switchValue: value})
-      console.log('Switch Value: ' + value)
+      this.setState({switchValue: value});
+      this.switchState = this.state.switchValue;
+      console.log('Switch Value: ' + value);
+      if (this.switchState === true){
+        mqttc = new MQTTClient("encenderfiltro",0);
+      } else{
+        mqttc = new MQTTClient("apagarfiltro",0);
+      }
+      
    }
 
    render() {

@@ -65,7 +65,7 @@ export default class Login extends Component {
             <ImageBackground style={styles.background} source={BackgroundFish}>
                 <KeyboardAvoidingView behavior={'padding'} style={styles.mainContainer}>
                     <Text style={styles.title}>Neo Aquarium</Text>
-                    <Text style={styles.title}>Iniciar Sesión</Text>
+                    <Text style={styles.subtitle}>Iniciar Sesión</Text>
                     <View style={styles.formContainer}>
                         <View style={styles.container}>
                             <TextInput 
@@ -97,6 +97,16 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     title: {
+        flex: 1,
+        color: colors.white,
+        marginTop: 10,
+        width: '100%',
+        height: '10%',
+        textAlign: 'center',
+        fontFamily: 'Verdana',
+        fontSize: 40,
+    },
+    subtitle: {
         flex: 1,
         color: colors.white,
         marginTop: 10,

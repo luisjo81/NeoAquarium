@@ -14,9 +14,9 @@ import FeatureLight from './src/screens/features/lights';
 //import FeatureWaterLevel from './src/screens/features/water-level';
 
 const MainNavigator = createStackNavigator({  
-  Signin: { screen: SigninScreen },
-  Login: { screen: LoginScreen },
-  Home: { screen: HomeScreen},
+  //Signin: { screen: SigninScreen },
+  //Login: { screen: LoginScreen },
+  //Home: { screen: HomeScreen},
   Menu: { screen: MenuScreen },
   Food: { screen: FeatureFood},
   Filtration: { screen: FeatureFiltration },
