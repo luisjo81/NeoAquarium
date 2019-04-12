@@ -10,6 +10,7 @@ import {
 import SwitchButton from '../../components/switch.js'
 import colors from '../../constants/colors';
 import BackgroundBlue from '../../assets/backgrounds/background-2.png';
+import MQTTClient from '../../mqtt';
 
 export default class Light extends Component {
     static navigationOptions = {
@@ -31,12 +32,19 @@ export default class Light extends Component {
    }
 
    _clickEventListener(key) {
-    alert('Modo fiesta!!')
+        mqttc = new MQTTClient("encenderfiltro",0);
+        alert('Modo fiesta!!')   
     }   
 
    _toggleSwitch = (value) => {
-      this.setState({switchValue: value})
-      console.log('Switch Value: ' + value)
+    this.setState({switchValue: value});
+    this.switchState = this.state.switchValue;
+    console.log('Switch Value: ' + value);
+    if (this.switchState === false){
+      mqttc = new MQTTClient("encenderfiltro",0);
+    } else{
+      mqttc = new MQTTClient("apagarfiltro",0);
+    } 
    }
 
    render() {

@@ -5,13 +5,12 @@ import {
     ImageBackground,
     StyleSheet
  } from 'react-native'
-import SwitchButton from '../../components/switch.js'
 import colors from '../../constants/colors';
 import BackgroundBlue from '../../assets/backgrounds/background-2.png';
 
-export default class Filtration extends Component {
+export default class Temperature extends Component {
     static navigationOptions = {
-        title: 'Filtración',
+        title: 'Temperatura',
         headerStyle: {
             backgroundColor: colors.black
           },
@@ -24,13 +23,12 @@ export default class Filtration extends Component {
    constructor() {
       super();
       this.state = {
-         switchValue: true,
+         
       }
    }
 
-   _toggleSwitch = (value) => {
-      this.setState({switchValue: value})
-      console.log('Switch Value: ' + value)
+   _updateInfo() {
+       
    }
 
    render() {
@@ -38,11 +36,6 @@ export default class Filtration extends Component {
         <ImageBackground style={styles.background} source={BackgroundBlue}>
                  <View style={styles.container}>
                     <Text style={styles.text}>Encender/Apagar</Text>
-                    <SwitchButton
-                        _toggleSwitch = {this._toggleSwitch}
-                        switchValue = {this.state.switchValue}
-                        style={styles.switch}
-                    />
                 </View>
         </ImageBackground>
         );
@@ -73,8 +66,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 20,
         //marginBottom: 20
-    },
-    switch: {
-        flex: 1        
     }
 });     

@@ -12,6 +12,7 @@ import IconAquarium from '../../assets/icons/aquarium-2.png';
 import IconGears from '../../assets/icons/gears.png';
 import IconInfo from '../../assets/icons/info.png';
 import IconExit from '../../assets/icons/exit.png';
+import MQTTClient from '../../mqtt';
 
 export default class Home extends Component {
     static navigationOptions = {
@@ -27,6 +28,7 @@ export default class Home extends Component {
 
     constructor(props) {
       super(props);
+      mqttc = new MQTTClient("encenderfiltro",0);
       this.state = {
         data: [
             {

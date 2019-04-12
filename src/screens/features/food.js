@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import colors from '../../constants/colors';
 import BackgroundBlue from '../../assets/backgrounds/background-2.png';
+import MQTTClient from '../../mqtt';
 
 export default class FeatureFood extends React.Component {
     static navigationOptions = {
@@ -29,7 +30,8 @@ export default class FeatureFood extends React.Component {
       }
 
       _clickEventListener(key) {
-          alert('Alimento Dispensado!')
+        mqttc = new MQTTClient("dispensar", 1);
+        alert('Alimento Dispensado!')
       }
     
       render() {

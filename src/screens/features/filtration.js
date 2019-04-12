@@ -23,6 +23,7 @@ export default class Filtration extends Component {
             color: colors.white
         },
       };
+      
 
    constructor() {
       super();
@@ -35,12 +36,11 @@ export default class Filtration extends Component {
       this.setState({switchValue: value});
       this.switchState = this.state.switchValue;
       console.log('Switch Value: ' + value);
-      if (this.switchState === true){
+      if (this.switchState === false){
         mqttc = new MQTTClient("encenderfiltro",0);
       } else{
         mqttc = new MQTTClient("apagarfiltro",0);
-      }
-      
+      }  
    }
 
    render() {

@@ -75,7 +75,7 @@ export default class Signin extends Component {
     _registerUser() {
         url = "http://" + ipAddress + ":" + port + "/api/v1/login";
         const formData = new FormData();
-        formData.append('username', this.state.userName),
+        formData.append('userName', this.state.userName),
         formData.append('name', this.state.firstName),
         formData.append('lastName', this.state.lastName),
         formData.append('password', this.state.password),
@@ -100,14 +100,14 @@ export default class Signin extends Component {
                  console.log("User signed succesfully");
                  this._printUserData();
                  this._setDefaultData();
-                 this.props.navigation.navigate('Home');
+                 this.props.navigation.navigate('Login');
                 }else{
                     Alert.alert("Problema al registrarse, inténtelo de nuevo");
                     console.log(result);
                     }
                 }).catch(function (error) {
-                    console.log("ERROR: " + error);
-                    alert("Result:" + error)
+                    //console.log("ERROR: " + error);
+                    //alert("Result:" + error)
                 });
     }
 

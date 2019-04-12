@@ -18,35 +18,15 @@ export default class Login extends Component {
             userName: '',
             firstName: '',
             lastName: '',
-            password: ''
+            password: '',
+            dataSource: ''
           };
     }
 
     _clickEventListener() {
+        this._getData();
         this.props.navigation.navigate('Home');
     }
-
-    _checkUserLogin = (user, pass) => {
-        if (user === 'luis' && pass === 'soa') {
-            this.props.navigation.navigate('Home');
-          } 
-        else {
-            this.setState({ message: 'Usuario o contraseña incorrectas'});
-            alert(this.state.message);
-        }
-    };
-
-    _onFirstNameChanged = event => {
-        this.setState({
-            firstName: event.nativeEvent.text,
-        });
-    };
-
-    _onLastNameChanged = event => {
-        this.setState({
-            lastName: event.nativeEvent.text,
-        });
-    };
 
     _onPasswordTextChanged = event => {
         this.setState({
@@ -60,12 +40,33 @@ export default class Login extends Component {
         });
     };
 
+    _getData(){
+        fetch('http://192.168.43.175:4000/api/v1/login?userName=' + this.state.userName + '&' + 'password=' + this.state.password, {
+         method: 'GET'
+      })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({
+            dataSource: responseJson.info,
+        });
+         console.log(responseJson);
+         if (responseJson==[]){
+            console.log("El usuario ingresado no existe.")           
+            alert("El usuario ingresado no existe.")
+         } else{
+            console.log("Usuario ingresó correctamente")
+         }
+      })
+      .catch((error) => {
+         console.error(error);
+      });
+    }
+
     render() {
         return (
             <ImageBackground style={styles.background} source={BackgroundFish}>
                 <KeyboardAvoidingView behavior={'padding'} style={styles.mainContainer}>
                     <Text style={styles.title}>Neo Aquarium</Text>
-                    <Text style={styles.subtitle}>Iniciar Sesión</Text>
                     <View style={styles.formContainer}>
                         <View style={styles.container}>
                             <TextInput 
@@ -73,11 +74,15 @@ export default class Login extends Component {
                                 placeholderTextColor = 'rgba(255,255,255,0.7)'
                                 autoCapitalize="none"
                                 autoCorrect={false}
+                                value={this.state.userName}
+                                onChange={this._onUserNameTextChanged}
                                 style={styles.input}/>
                             <TextInput 
                                 placeholder="Contraseña"
                                 placeholderTextColor = 'rgba(255,255,255,0.7)'
                                 secureTextEntry 
+                                value={this.state.password}
+                                onChange={this._onPasswordTextChanged}
                                 style={styles.input}/>
                             <TouchableOpacity style={styles.buttonContainer} onPress={() => {this._clickEventListener()}}>
                                 <Text style={styles.buttonText}>Ingresar</Text>
