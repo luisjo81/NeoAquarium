@@ -26,7 +26,6 @@ export default class FeatureFood extends React.Component {
       constructor(props) {
         super(props);
         this.state = {
-
         };
       }
 
