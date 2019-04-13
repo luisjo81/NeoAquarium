@@ -28,9 +28,9 @@ export default class Login extends Component {
         };
     }
 
+    //Listener depending of the option
     _clickEventListener() {
         this._getData();
-        this.props.navigation.navigate('Home');
     }
 
     _onPasswordTextChanged = event => {
@@ -45,6 +45,7 @@ export default class Login extends Component {
         });
     };
 
+    //Get info from the server when user is login
     _getData() {
         fetch('http://192.168.43.175:4000/api/v1/login?userName=' + this.state.userName + '&' + 'password=' + this.state.password, {
             method: 'GET'
@@ -60,6 +61,7 @@ export default class Login extends Component {
                     alert("El usuario ingresado no existe.")
                 } else {
                     console.log("Usuario ingresó correctamente.")
+                    this.props.navigation.navigate('Home');
                 }
             })
             .catch((error) => {

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    StyleSheet,
     Text,
     View,
     Image,
@@ -10,12 +9,15 @@ import {
 } from 'react-native';
 import colors from '../../constants/colors';
 import styles from '../../constants/styles';
+
+//Icons
 import IconHumidity from '../../assets/icons/water.png';
 import IconFood from '../../assets/icons/food.png';
 import IconPump from '../../assets/icons/pump.png';
 import IconLight from '../../assets/icons/light.png';
 import IconTemperature from '../../assets/icons/thermometer.png';
 import IconLevel from '../../assets/icons/water-level.png';
+//Backgrounds
 import BackgroundBlue from '../../assets/backgrounds/background-2.png';
 import BackgroundMov from '../../assets/backgrounds/background-mov.gif';
 

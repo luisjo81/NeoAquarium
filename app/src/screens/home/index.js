@@ -6,9 +6,15 @@ import {
     Text,
     Image
 } from 'react-native';
+
+//Constants
 import colors from '../../constants/colors';
 import styles from '../../constants/styles';
+
+//Server Protocol
 import MQTTClient from '../../mqtt';
+
+//Icons
 import IconAquarium from '../../assets/icons/aquarium-2.png';
 import IconGears from '../../assets/icons/gears.png';
 import IconInfo from '../../assets/icons/info.png';
@@ -63,15 +69,16 @@ export default class Home extends Component {
       };
     }
   
+    //Selects an option depending of the list item touched
     _clickEventListener(key) {
         if(key === 1){
             this.props.navigation.navigate('Menu');
         }
         if(key === 2){
-            //this.props.navigation.navigate('Menu');
+            alert('Under Construction')
         }
         if(key === 3){
-            //this.props.navigation.navigate('Menu');
+            alert('Desarrollado por Luis Martínez y Rafael Vargas para el curso de SOA');
         }
         if(key === 4){
             this.props.navigation.navigate('Login');

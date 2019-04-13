@@ -72,6 +72,7 @@ export default class Signin extends Component {
         console.log('Password:' + this.state.password);
     }
 
+    //Connect with the server to create user
     _registerUser() {
         url = "http://" + ipAddress + ":" + port + "/api/v1/login";
         const formData = new FormData();
@@ -122,6 +123,7 @@ export default class Signin extends Component {
         });
     }
 
+    //Checks if all the spaces in form have information
     _verifyUserForm() {
         if (
             this.state.userName === '' ||
