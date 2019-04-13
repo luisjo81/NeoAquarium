@@ -67,4 +67,3 @@ Luego de ejecutar el comando se abrirá una página web en un browser, la cual m
 ## Autores
 * **Luis Martínez Ramírez** - *Desarrollo de App y Prototipo*
 * **Rafael Vargas Solís** - *Desarrollo de Servidor Web y Prototipo*
-
