@@ -85,13 +85,13 @@ export default class Menu extends React.Component {
           this.props.navigation.navigate('Light');
         }
         if(key === "temperature"){
-            //this.props.navigation.navigate('Menu');
+          this.props.navigation.navigate('Temperature');
         }
         if(key === "humidity"){
-            
+          this.props.navigation.navigate('Humidity');
         }
         if(key === "level"){
-            //this.props.navigation.navigate('Menu');
+          this.props.navigation.navigate('WaterLevel');
         }
       }
     

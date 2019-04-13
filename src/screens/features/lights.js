@@ -41,9 +41,9 @@ export default class Light extends Component {
     this.switchState = this.state.switchValue;
     console.log('Switch Value: ' + value);
     if (this.switchState === false){
-      mqttc = new MQTTClient("encenderfiltro",0);
+      mqttc = new MQTTClient("encenderluz",0,0);
     } else{
-      mqttc = new MQTTClient("apagarfiltro",0);
+      mqttc = new MQTTClient("apagarluz",0.0);
     } 
    }
 

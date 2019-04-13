@@ -22,8 +22,7 @@ export default class Filtration extends Component {
             fontWeight: 'bold',
             color: colors.white
         },
-      };
-      
+    };
 
    constructor() {
       super();
