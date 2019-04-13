@@ -1,9 +1,12 @@
+//React Navigation Components
 import {
-  createStackNavigator,
-  createAppContainer
+  createAppContainer,
+  createStackNavigator
 } from 'react-navigation';
-import SigninScreen from './src/screens/signin';
+
+//Screen Components
 import LoginScreen from './src/screens/login';
+import SigninScreen from './src/screens/signin';
 import HomeScreen from './src/screens/home';
 import MenuScreen from './src/screens/menu';
 import FeatureFood from './src/screens/features/food';
@@ -13,19 +16,19 @@ import FeatureTemperature from './src/screens/features/temperature';
 import FeatureHumidity from './src/screens/features/humidity';
 import FeatureWaterLevel from './src/screens/features/water-level';
 
-const MainNavigator = createStackNavigator({  
-  //Signin: { screen: SigninScreen },
-  //Login: { screen: LoginScreen },
-  //Home: { screen: HomeScreen},
+//Stack Navigator
+const MainNavigator = createStackNavigator({
+  Login: { screen: LoginScreen },
+  Signin: { screen: SigninScreen },
+  Home: { screen: HomeScreen },
   Menu: { screen: MenuScreen },
-  Food: { screen: FeatureFood},
+  Food: { screen: FeatureFood },
   Filtration: { screen: FeatureFiltration },
-  Light: { screen: FeatureLight},
-  Temperature: { screen: FeatureTemperature},
-  Humidity: { screen: FeatureHumidity},
-  WaterLevel: { screen: FeatureWaterLevel}
+  Light: { screen: FeatureLight },
+  Temperature: { screen: FeatureTemperature },
+  Humidity: { screen: FeatureHumidity },
+  WaterLevel: { screen: FeatureWaterLevel }
 });
 
 const App = createAppContainer(MainNavigator);
-
 export default App

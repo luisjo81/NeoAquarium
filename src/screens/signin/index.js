@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { 
-    StyleSheet,
-    View,
+import {
     ImageBackground,
+    KeyboardAvoidingView,
     Text,
+    View,
     TextInput,
-    TouchableOpacity,
-    KeyboardAvoidingView
+    TouchableOpacity
 } from 'react-native';
 import colors from '../../constants/colors';
+import styles from '../../constants/styles';
 import BackgroundBlue from '../../assets/backgrounds/background-2.png';
 
 global.ipAddress = '192.168.43.175'
@@ -26,7 +26,7 @@ export default class Signin extends Component {
             password: ''
         };
     }
-  
+
     _onEmailTextChanged = event => {
         this.setState({
             email: event.nativeEvent.text,
@@ -63,7 +63,7 @@ export default class Signin extends Component {
         });
     }
 
-    _printUserData (){
+    _printUserData() {
         console.log('Username:' + this.state.userName);
         console.log('First Name:' + this.state.firstName);
         console.log('Last Name:' + this.state.lastName);
@@ -76,39 +76,39 @@ export default class Signin extends Component {
         url = "http://" + ipAddress + ":" + port + "/api/v1/login";
         const formData = new FormData();
         formData.append('userName', this.state.userName),
-        formData.append('name', this.state.firstName),
-        formData.append('lastName', this.state.lastName),
-        formData.append('password', this.state.password),
-        formData.append('email', this.state.email),
-        formData.append('cell', this.state.phoneNumber)
+            formData.append('name', this.state.firstName),
+            formData.append('lastName', this.state.lastName),
+            formData.append('password', this.state.password),
+            formData.append('email', this.state.email),
+            formData.append('cell', this.state.phoneNumber)
 
-        console.log("url:"+url);
-      
-        fetch(url,{
-              method: 'POST',
-              body: formData
-              }).then(function (response) {
-                return response.json();
-              }).then(function (result) { 
-                console.log(result);
-                if(!result.error){
-                 this.setState({ 
-                                status: result.error,
-                                wholeResult: result
-                              });
-                 alert("Registro completado");
-                 console.log("User signed succesfully");
-                 this._printUserData();
-                 this._setDefaultData();
-                 this.props.navigation.navigate('Login');
-                }else{
-                    Alert.alert("Problema al registrarse, inténtelo de nuevo");
-                    console.log(result);
-                    }
-                }).catch(function (error) {
-                    //console.log("ERROR: " + error);
-                    //alert("Result:" + error)
+        console.log("url:" + url);
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        }).then(function (response) {
+            return response.json();
+        }).then(function (result) {
+            console.log(result);
+            if (!result.error) {
+                this.setState({
+                    status: result.error,
+                    wholeResult: result
                 });
+                alert("Registro completado");
+                console.log("User signed succesfully");
+                this._printUserData();
+                this._setDefaultData();
+                this.props.navigation.navigate('Login');
+            } else {
+                Alert.alert("Problema al registrarse, inténtelo de nuevo");
+                console.log(result);
+            }
+        }).catch(function (error) {
+            //console.log("ERROR: " + error);
+            //alert("Result:" + error)
+        });
     }
 
     _setDefaultData() {
@@ -129,72 +129,71 @@ export default class Signin extends Component {
             this.state.lastName === '' ||
             this.state.email === '' ||
             this.state.phoneNumber === '' ||
-            this.state.password === '' 
-            )
-            {
-                alert("Se deben completar todos los espacios");
-            } else {
-                this._registerUser()
-            }
-        
+            this.state.password === ''
+        ) {
+            alert("Se deben completar todos los espacios");
+        } else {
+            this._registerUser()
+        }
+
     }
 
     render() {
         return (
-            <ImageBackground style={styles.background} source={BackgroundBlue}>
-                <KeyboardAvoidingView behavior={'padding'} style={styles.mainContainer}>
-                    <Text style={styles.title}>Registrarse</Text>
-                    <View style={styles.formContainer}>
-                        <View style={styles.container}>
-                            <TextInput 
-                                placeholder="Usuario" 
-                                placeholderTextColor = 'rgba(255,255,255,0.7)'
+            <ImageBackground style={styles.signinScreenBackground} source={BackgroundBlue}>
+                <KeyboardAvoidingView behavior={'padding'} style={styles.signinScreenMainContainer}>
+                    <Text style={styles.signinScreenTitleText}>Registro</Text>
+                    <View style={styles.signinScreenFormContainer}>
+                        <View style={styles.signinScreenSecondContainer}>
+                            <TextInput
+                                placeholder="Usuario"
+                                placeholderTextColor={colors.transparentWhite}
                                 autoCapitalize="none"
                                 autoCorrect={false}
                                 value={this.state.userName}
                                 onChange={this._onUserNameTextChanged}
-                                style={styles.input}/>
-                            <TextInput 
-                                placeholder="Nombre" 
-                                placeholderTextColor = 'rgba(255,255,255,0.7)'
+                                style={styles.signinScreenInputContainer} />
+                            <TextInput
+                                placeholder="Nombre"
+                                placeholderTextColor={colors.transparentWhite}
                                 autoCorrect={false}
                                 value={this.state.firstName}
                                 onChange={this._onFirstNameChanged}
-                                style={styles.input}/>
-                            <TextInput 
-                                placeholder="Apellido" 
-                                placeholderTextColor = 'rgba(255,255,255,0.7)'
+                                style={styles.signinScreenInputContainer} />
+                            <TextInput
+                                placeholder="Apellido"
+                                placeholderTextColor={colors.transparentWhite}
                                 autoCorrect={false}
                                 value={this.state.lastName}
                                 onChange={this._onLastNameChanged}
-                                style={styles.input}/>
-                            <TextInput 
-                                placeholder="Correo electrónico" 
-                                placeholderTextColor = 'rgba(255,255,255,0.7)'
+                                style={styles.signinScreenInputContainer} />
+                            <TextInput
+                                placeholder="Correo Electrónico"
+                                placeholderTextColor={colors.transparentWhite}
                                 autoCapitalize="none"
                                 autoCorrect={false}
                                 value={this.state.email}
                                 onChange={this._onEmailTextChanged}
-                                style={styles.input}/>
-                            <TextInput 
-                                placeholder="Número Telefónico" 
-                                placeholderTextColor = 'rgba(255,255,255,0.7)'
+                                style={styles.signinScreenInputContainer} />
+                            <TextInput
+                                placeholder="Número Telefónico"
+                                placeholderTextColor={colors.transparentWhite}
                                 keyboardType='phone-pad'
                                 returnKeyType='done'
                                 value={this.state.phoneNumber}
                                 onChange={this._onPhoneNumberTextChanged}
-                                style={styles.input}/>
-                            <TextInput 
+                                style={styles.signinScreenInputContainer} />
+                            <TextInput
                                 placeholder="Contraseña"
-                                placeholderTextColor = 'rgba(255,255,255,0.7)'
+                                placeholderTextColor={colors.transparentWhite}
                                 autoCapitalize="none"
                                 autoCorrect={false}
                                 secureTextEntry
                                 value={this.state.password}
-                                onChange={this._onPasswordTextChanged} 
-                                style={styles.input}/>
-                            <TouchableOpacity style={styles.buttonContainer} onPress={() => {this._verifyUserForm()}}>
-                                <Text style={styles.buttonText}>Ingresar</Text>
+                                onChange={this._onPasswordTextChanged}
+                                style={styles.signinScreenInputContainer} />
+                            <TouchableOpacity style={styles.signinScreenButtonContainer} onPress={() => { this._verifyUserForm() }}>
+                                <Text style={styles.signinScreenButtonText}>Finalizar Registro</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -203,47 +202,3 @@ export default class Signin extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        width: '100%',
-        height: '100%'
-    },
-    title: {
-        flex: 1,
-        color: colors.white,
-        marginTop: 10,
-        width: '100%',
-        height: '10%',
-        textAlign: 'center',
-        fontFamily: 'Verdana',
-        fontSize: 40,
-    },
-    mainContainer: {
-        flex: 1
-    },
-    formContainer: {
-        flex: 1,
-        marginBottom: 270
-    },
-    container: {
-        padding: 20
-    },
-    input: {
-        height: 40,
-        backgroundColor: 'rgba(255,255,255,0.2)',
-        marginBottom: 10,
-        color: colors.white,
-        paddingHorizontal: 10
-    },
-    buttonContainer: {
-        backgroundColor: colors.blue2,
-        padding: 15
-    },
-    buttonText: {
-        textAlign: 'center',
-        color: colors.white,
-        fontWeight: '700'
-    }
-})

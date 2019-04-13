@@ -9,6 +9,7 @@ import {
     FlatList
 } from 'react-native';
 import colors from '../../constants/colors';
+import styles from '../../constants/styles';
 import IconHumidity from '../../assets/icons/water.png';
 import IconFood from '../../assets/icons/food.png';
 import IconPump from '../../assets/icons/pump.png';
@@ -97,10 +98,10 @@ export default class Menu extends React.Component {
     
       render() {
         return (
-            <ImageBackground style={styles.background} source={BackgroundBlue}>
-                 <View style={styles.container}>
-                    <FlatList style={styles.list}
-                    contentContainerStyle={styles.listContainer}
+            <ImageBackground style={styles.menuScreenBackground} source={BackgroundBlue}>
+                 <View style={styles.menuScreenMainContainer}>
+                    <FlatList style={styles.menuScreenList}
+                    contentContainerStyle={styles.menuScreenListContainer}
                     data={this.state.data}
                     horizontal={true}
                     keyExtractor={(item) => {
@@ -108,78 +109,21 @@ export default class Menu extends React.Component {
                     }}
                     renderItem={({item}) => {
                         return (
-                        <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} onPress={() => {this._clickEventListener(item.key)}}>
-                            <View style={styles.cardHeader}>
-                              <Text style={styles.title}>{item.title}</Text>
+                        <TouchableOpacity style={[styles.menuScreenCard, {backgroundColor:item.color}]} onPress={() => {this._clickEventListener(item.key)}}>
+                            <View style={styles.menuScreenCardHeader}>
+                              <Text style={styles.menuScreenTitleText}>{item.title}</Text>
                             </View>
-                            <Image style={styles.cardImage} source={item.image}/>
+                            <Image style={styles.menuScreenCardImage} source={item.image}/>
                         </TouchableOpacity>
                         )
                     }}/>
                 </View>
-                <View style={styles.optionContainer}>
-                  <ImageBackground style={styles.background} source={BackgroundMov}>
-
+                <View style={styles.menuScreenOptionContainer}>
+                  <ImageBackground style={styles.menuScreenBackground} source={BackgroundMov}>
                   </ImageBackground>
                 </View>
             </ImageBackground>
         );
       }
   }
-    
-const styles = StyleSheet.create({
-    background: {
-      flex: 1,
-      width: '100%',
-      height: '100%'
-    },
-    container: {
-      flex: 1,
-      marginTop: 5
-    },
-    list: {
-      paddingBottom: '50%',
-      height: 10
-    },
-    listContainer:{
-      alignItems:'center'
-    },
-    card:{
-      marginHorizontal: 2,
-      flexBasis: '48%',
-      width: 150,
-      height: 200,
-      borderWidth: 2,
-      borderColor: colors.blue2
-    },
-    cardHeader: {
-      paddingVertical: 17,
-      paddingHorizontal: 16,
-      borderTopLeftRadius: 1,
-      borderTopRightRadius: 1,
-      flexDirection: 'row',
-      alignItems:"center", 
-      justifyContent:"center"
-    },
-    cardContent: {
-      paddingVertical: 12.5,
-      paddingHorizontal: 16
-    },
-    cardImage:{
-      height: 90,
-      width: 90,
-      alignSelf: 'center',
-      marginTop: 5
-    },
-    title:{
-      fontSize:16,
-      flex:1,
-      color: colors.white,
-      fontWeight:'bold',
-      textAlign: 'center',
-      marginTop: 42
-    },
-    optionContainer: {
-      height: '70%'
-    }
-});     
+   

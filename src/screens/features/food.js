@@ -7,6 +7,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import colors from '../../constants/colors';
+import styles from '../../constants/styles';
 import BackgroundBlue from '../../assets/backgrounds/background-2.png';
 import MQTTClient from '../../mqtt';
 
@@ -36,10 +37,10 @@ export default class FeatureFood extends React.Component {
     
       render() {
         return (
-            <ImageBackground style={styles.background} source={BackgroundBlue}>
-                 <View style={styles.container}>
-                    <TouchableOpacity style={[styles.box, {backgroundColor:colors.black}]} onPress={() => {this._clickEventListener()}}>
-                        <Text style={styles.buttonText}>Dispensar</Text>
+            <ImageBackground style={styles.foodScreenBackground} source={BackgroundBlue}>
+                 <View style={styles.foodScreenMainContainer}>
+                    <TouchableOpacity style={[styles.foodScreenSmallContainer, {backgroundColor:colors.black}]} onPress={() => {this._clickEventListener()}}>
+                        <Text style={styles.foodScreenButtonText}>Dispensar</Text>
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
@@ -47,31 +48,3 @@ export default class FeatureFood extends React.Component {
       }
   }
     
-const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        width: '100%',
-        height: '100%'
-    },
-    container: {
-        flex: 1,
-        marginTop: '60%',
-        alignItems: 'center'
-    },
-    buttonText: { 
-        fontSize: 25,
-        flex: 1,
-        color: colors.white,
-        fontWeight:'bold',
-        textAlign: 'center',
-        marginTop: 20,
-        marginBottom: 20
-    },
-    box:{
-        marginHorizontal: 2,
-        width: 200,
-        height: 80,
-        borderWidth: 2,
-        borderColor: colors.blue2
-      },
-});     

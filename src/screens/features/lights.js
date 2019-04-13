@@ -4,11 +4,11 @@ import {
     TextInput,
     View,
     ImageBackground,
-    TouchableOpacity,
-    StyleSheet
+    TouchableOpacity
  } from 'react-native'
 import SwitchButton from '../../components/switch.js'
 import colors from '../../constants/colors';
+import styles from '../../constants/styles';
 import BackgroundBlue from '../../assets/backgrounds/background-2.png';
 import MQTTClient from '../../mqtt';
 
@@ -49,80 +49,28 @@ export default class Light extends Component {
 
    render() {
       return (
-        <ImageBackground style={styles.background} source={BackgroundBlue}>
-                 <View style={styles.container}>
-                    <Text style={styles.text}>Encender/Apagar</Text>
+        <ImageBackground style={styles.lightScreenBackground} source={BackgroundBlue}>
+                 <View style={styles.lightScreenMainContainer}>
+                    <Text style={styles.lightScreenTitleText}>Encender/Apagar</Text>
                     <SwitchButton
                         _toggleSwitch = {this._toggleSwitch}
                         switchValue = {this.state.switchValue}
-                        style={styles.switch}
+                        style={styles.lightScreenSwitch}
                     />
-                    <Text style={styles.text}>Modo Fiesta</Text>
+                    <Text style={styles.lightScreenTitleText}>Modo Fiesta</Text>
                     <TextInput 
                         placeholder="Minutos" 
-                        placeholderTextColor = 'rgba(255,255,255,0.7)'
+                        placeholderTextColor = {colors.transparentWhite}
                         keyboardType='number-pad'
                         returnKeyType='done'
-                        style={styles.input}
+                        style={styles.lightScreenInput}
                     />
-                    <TouchableOpacity style={[styles.buttonBox, {backgroundColor:colors.black}]} onPress={() => {this._clickEventListener()}}>
-                        <Text style={styles.buttonText}>Comenzar</Text>
+                    <TouchableOpacity style={[styles.lightScreenButtonBox, {backgroundColor:colors.black}]} onPress={() => {this._clickEventListener()}}>
+                        <Text style={styles.lightScreenButtonText}>Comenzar</Text>
                     </TouchableOpacity>
                 </View>
         </ImageBackground>
         );
    }
 }
-
-const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        width: '100%',
-        height: '100%'
-    },
-    container: {
-        marginTop: '25%',
-        marginLeft: '17%',
-        width: '65%',
-        height: '70%',
-        borderWidth: 2,
-        borderColor: colors.blue2,
-        backgroundColor: 'rgba(0,0,0, .5)',
-        alignItems: 'center'
-    },
-    text: { 
-        fontSize: 15,
-        flex: 1,
-        color: colors.white,
-        fontWeight:'bold',
-        textAlign: 'center',
-        marginTop: 20,
-    },
-    switch: {
-        flex: 1        
-    },
-    input: {
-        height: 40,
-        width: 80,
-        backgroundColor: 'rgba(255,255,255,0.2)',
-        marginBottom: 10,
-        color: colors.white,
-        paddingHorizontal: 10
-    },
-    buttonText: { 
-        fontSize: 12,
-        flex: 1,
-        color: colors.white,
-        fontWeight:'bold',
-        textAlign: 'center',
-        marginTop: 20,
-        marginBottom: 20
-    },
-    buttonBox:{
-        marginHorizontal: 2,
-        width: 95,
-        height: 58,
-        borderWidth: 2,
-        borderColor: colors.blue2
-      },
-});     
+ 
